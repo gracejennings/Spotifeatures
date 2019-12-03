@@ -1,6 +1,6 @@
-#Final Project Write Up: Spotifeatures
+# Final Project Write Up: Spotifeatures
 
-###The Project: Music Analytics and Suggestions with the Spotify API
+### The Project: Music Analytics and Suggestions with the Spotify API
 
 This project is a TCP Client/Server application. The Client is the App where a browser is opened for a user to log onto their Spotify account and authorizes the application to access their data. If the access is granted, the App establishes a connection to the server and sends the access code to the Server. The Server holds all of the general analytics and all of the API calls after authentication. Specifically, the server performs three main functions: finding the Spotify users' 50 top artists played, finding the Spotify users' 50 top songs played, and recommending a playlist from another user on the server based on their top artists. 
 
@@ -8,7 +8,7 @@ I chose this project because I spend a lot of my time on Spotify listening to mu
 
 With my project, Spotifeatures will recommend a playlist from one of the other users that has joined the server based on the current user's most listened to artists. It does so by 'scoring' each of the playlists that the Server has stored by how many songs they contain of your top artists. Then the Server recommends the playlist with the top 'score.' This allows the current user to discover new music by related artists. 
 
-###Technical Challenges and Solutions:
+### Technical Challenges and Solutions:
 
 **_Server/Client Communication_**: I decided to use TCP for my client/server communication and developed a protocol for communication. The App (client) authenticates the user. The App sends a `JOIN` message to the Server and the Server starts a Server Thread for each client that joins. The Server Thread sends request messages for the user access token and refresh token from the App to configure the Spotify API in the ServerThread. The App client communicates with the ServerThread through the menu options shown in the App. The ServerThread sends all of the requested information back to the App. For example, when the App requests "songs" the server reads "songs" and creates an array of the user's top songs. It then turns this into a String list separated by commas and sends it back to the App. The App parses the message and prints each individual song. 
 
